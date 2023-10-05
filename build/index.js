@@ -26,8 +26,8 @@ app.use((err, req, res, next) => {
 });
 app.listen(port, () => {
     console.log(`Account Api server listening on port ${port}`);
-    if (!process.env.FI_URL) {
-        throw new Error("FI_URL environment variable missing");
+    if (!process.env.TOKEN_URL) {
+        throw new Error("TOKEN_URL environment variable missing");
     }
     if (!process.env.ORACLE_USER) {
         throw new Error('Oracle user name environment variable missing');

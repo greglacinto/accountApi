@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const auth = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const token = extractToken(req);
-    const url = process.env.FI_URL;
+    const url = process.env.TOKEN_URL;
     const customHeaders = {
         "Content-Type": "application/json",
     };

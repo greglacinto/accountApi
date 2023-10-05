@@ -13,7 +13,7 @@ module.exports = {
       ORACLE_USER: 'system',
       ORACLE_PASS: 'manager',
       ORACLE_CONN_STR: '10.20.21.15:1625/CWG11',
-      FI_URL: 'http://localhost:3100/token/verify'
+      TOKEN_URL: 'http://localhost:3100/token/verify'
     }
   }]
 }
