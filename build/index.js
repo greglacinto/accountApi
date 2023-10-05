@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const cors_1 = __importDefault(require("cors"));
+const { initOracleClient } = require("oracledb");
 const oracle_db_1 = __importDefault(require("./database/oracle.db"));
 const home_routes_1 = __importDefault(require("./route/home.routes"));
 const app = (0, express_1.default)();
@@ -39,6 +40,7 @@ app.listen(port, () => {
         throw new Error('Oracle conn string environment variable missing');
     }
     try {
+        initOracleClient();
         oracle_db_1.default.openConn();
         console.log("Database connection test successful");
     }

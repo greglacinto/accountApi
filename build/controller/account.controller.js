@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountEnquiry = void 0;
 const oracle_db_1 = __importDefault(require("../database/oracle.db"));
+const query_db_1 = require("../database/query.db");
 function AccountEnquiry(req, res) {
     var _a, _b;
     return __awaiter(this, void 0, void 0, function* () {
@@ -23,13 +24,7 @@ function AccountEnquiry(req, res) {
             // Establish a database connection
             const connection = yield oracle_db_1.default.openConn();
             // Execute an SQL query (replace 'YOUR_QUERY' with your actual SQL query)
-            const query = `
-      select gam.acct_name, gam.cif_id, phone.PHONENUMBER, email.EMAILID 
-      FROM TBAADM.GAM gam, CIF.PHONEDETAIL phone, CIF.EMAILDETAIL email 
-      where gam.foracid = :id
-      and gam.cif_id = phone.cifid and gam.cif_id = email.cifid AND ROWNUM=1
-    `;
-            const result = yield connection.execute(query, [foracid]);
+            const result = yield connection.execute(query_db_1.accountEnquiryQuery, [foracid]);
             // close database connection
             yield connection.close();
             console.log("===== Closed database connection =====");

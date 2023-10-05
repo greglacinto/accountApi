@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BalanceEnquiry = void 0;
 const oracle_db_1 = __importDefault(require("../database/oracle.db"));
+const query_db_1 = require("../database/query.db");
 function BalanceEnquiry(req, res) {
     var _a, _b, _c;
     return __awaiter(this, void 0, void 0, function* () {
@@ -21,8 +22,9 @@ function BalanceEnquiry(req, res) {
         try {
             // Establish a database connection
             const connection = yield oracle_db_1.default.openConn();
+            console.log(query_db_1.balanceEnquiryQuery);
             // Execute an SQL query (replace 'YOUR_QUERY' with your actual SQL query)
-            const result = yield connection.execute('SELECT CLR_BAL_AMT FROM TBAADM.GAM WHERE FORACID = :id AND ROWNUM=1', [foracid]);
+            const result = yield connection.execute(query_db_1.balanceEnquiryQuery, [foracid]);
             // close database connection
             yield connection.close();
             if (((_a = result.rows) === null || _a === void 0 ? void 0 : _a.length) == 0) {

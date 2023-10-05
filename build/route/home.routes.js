@@ -12,10 +12,10 @@ class HomeRoutes {
         this.initializeRoutes();
     }
     initializeRoutes() {
-        this.router.get('/test', auth, test_controller_1.Test);
+        this.router.get('/test', test_controller_1.Test);
         this.router.post('/account/name-enquiry', auth, name_controller_1.NameEnquiry);
-        this.router.post('/account/balance-enquiry', balance_controller_1.BalanceEnquiry);
-        this.router.post('/account/enquiry', account_controller_1.AccountEnquiry);
+        this.router.post('/account/balance-enquiry', auth, balance_controller_1.BalanceEnquiry);
+        this.router.post('/account/enquiry', auth, account_controller_1.AccountEnquiry);
     }
 }
 exports.default = new HomeRoutes().router;
